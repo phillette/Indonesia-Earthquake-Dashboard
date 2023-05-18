@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import hydralit_components as hc
 import datetime
@@ -55,7 +56,8 @@ menu_id = hc.nav_bar(
 )
 
 
-df = pd.read_csv(r'D:\gempa\katalog_gempa.csv')
+dir_path = os.path.dirname(os.path.realpath(__file__))
+df = pd.read_csv(dir_path + "\katalog_gempa.csv")
 df['tgl'] = pd.to_datetime(df['tgl'], format='%Y-%m-%d')
 df['ot'] = pd.to_datetime(df['ot'], format='%H:%M:%S')
 
